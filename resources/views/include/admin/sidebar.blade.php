@@ -82,8 +82,8 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->routeIs('backend.kontak.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.saran.index') }}" class='sidebar-link'>
                         <i class="bi bi-envelope-fill"></i>
                         <span>Kontak Saran</span>
                     </a>

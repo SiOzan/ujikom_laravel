@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SaranController;
 use App\Http\Controllers\KategoriPengaduanController;
 
 Route::get('/', function () {
@@ -30,4 +31,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('kategori-pengaduan/edit/{slug}', [kategoriPengaduanController::class, 'edit'])->name('admin.kategoriPengaduan.edit');
     Route::put('kategori-pengaduan/{slug}', [kategoriPengaduanController::class, 'update'])->name('admin.kategoriPengaduan.update');
     Route::delete('kategori-pengaduan/{id}', [KategoriPengaduanController::class, 'destroy'])->name('admin.kategoriPengaduan.destroy');
+
+    Route::get('saran', [SaranController::class, 'index'])->name('admin.saran.index');
+    Route::get('saran/create', [SaranController::class, 'create'])->name('admin.saran.create');
+    Route::post('saran', [SaranController::class, 'store'])->name('admin.saran.store');
+    Route::delete('saran/{id}', [SaranController::class, 'destroy'])->name('admin.saran.destroy');
 });

@@ -31,16 +31,13 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         $role = Auth::user()->role;
-        // Tentukan redirect URL berdasarkan role
         switch ($role) {
             case 'Admin':
                 return '/admin/dashboard';
             case 'Petugas':
                 return '/petugas/dashboard';
-            case 'Masyarakat':
-                return '/beranda';
             default:
-                return '/home'; // Default jika role tidak dikenal
+                return '/home';
         }
     }
 

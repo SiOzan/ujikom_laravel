@@ -61,20 +61,23 @@
                         <li class="submenu-item {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
                             <a href="{{ route('admin.user.index') }}" class="submenu-link">Akun Petugas</a>
                         </li>
-                        <li class="submenu-item  ">
-                            <a href="auth-register.html" class="submenu-link">Data Petugas</a>
+                        <li class="submenu-item {{ request()->routeIs('admin.petugas.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.petugas.index') }}" class="submenu-link">Data Petugas</a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
+                <li
+                    class="sidebar-item {{ request()->routeIs('admin.kategoriPengaduan.*') || request()->routeIs('admin.pengaduan.*') ? 'active' : '' }} has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Pengaduan</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item  ">
-                            <a href="component-accordion.html" class="submenu-link">Kategori Pengaduan</a>
+                    <ul
+                        class="submenu {{ request()->routeIs('admin.kategoriPengaduan.*') || request()->routeIs('admin.pengaduan.*') ? 'active submenu-open' : 'submenu-closed' }}">
+                        <li class="submenu-item {{ request()->routeIs('admin.kategoriPengaduan.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.kategoriPengaduan.index') }}" class="submenu-link">Kategori
+                                Pengaduan</a>
                         </li>
                         <li class="submenu-item  ">
                             <a href="component-alert.html" class="submenu-link">Pengaduan Masyarakat</a>
@@ -82,7 +85,7 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item {{ request()->routeIs('backend.kontak.index') ? 'active' : '' }}">
+                <li class="sidebar-item {{ request()->routeIs('admin.saran.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.saran.index') }}" class='sidebar-link'>
                         <i class="bi bi-envelope-fill"></i>
                         <span>Kontak Saran</span>
@@ -99,17 +102,14 @@
                 </li>
 
                 <li class="sidebar-item  ">
-                    <a href="https://github.com/zuramai/mazer/blob/main/CONTRIBUTING.md" class='sidebar-link'>
-                        <i class="bi bi-puzzle"></i>
-                        <span>Contribute</span>
+                    <a href="{{ route('logout') }}" class='sidebar-link'
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <span>Logout</span>
                     </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="https://github.com/zuramai/mazer#donation" class='sidebar-link'>
-                        <i class="bi bi-cash"></i>
-                        <span>Donate</span>
-                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </li>
 
             </ul>

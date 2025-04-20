@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SaranController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\KategoriPengaduanController;
 
 Route::get('/', function () {
@@ -36,4 +37,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('saran/create', [SaranController::class, 'create'])->name('admin.saran.create');
     Route::post('saran', [SaranController::class, 'store'])->name('admin.saran.store');
     Route::delete('saran/{id}', [SaranController::class, 'destroy'])->name('admin.saran.destroy');
+
+    Route::get('petugas', [PetugasController::class, 'index'])->name('admin.petugas.index');
+    Route::get('petugas/create', [PetugasController::class, 'create'])->name('admin.petugas.create');
+    Route::post('petugas', [PetugasController::class, 'store'])->name('admin.petugas.store');
+    Route::get('petugas/edit/{id}', [PetugasController::class, 'edit'])->name('admin.petugas.edit');
+    Route::delete('petugas/{id}', [PetugasController::class, 'destroy'])->name('admin.petugas.destroy');
 });

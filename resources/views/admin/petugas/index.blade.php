@@ -28,32 +28,40 @@
                     {{-- <h5 class="card-title">
                                     Simple Datatable
                                 </h5> --}}
-                    <a href="{{ route('admin.kategoriPengaduan.create') }}" class="btn icon icon-left btn-success">
-                        Tambah Kategori</a>
+                    <a href="{{ route('admin.petugas.create') }}" class="btn icon icon-left btn-success">
+                        Tambah Data Petugas</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Kategori</th>
-                                <th>Deskripsi</th>
+                                <th>Nama Petugas</th>
+                                <th>Email</th>
+                                <th>Telepon</th>
+                                <th>Foto</th>
+                                <th>Alamat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($kategoriPengaduan as $item)
+                            @foreach ($petugas as $item)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $item->nama_kategori }}</td>
-                                    <td>{{ $item->deskripsi }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->user->email }}</td>
+                                    <td>{{ $item->telepon }}</td>
+                                    <td class="avatar avatar-lg">
+                                        <img src="{{ Storage::url($item->foto) }}">
+                                    </td>
+                                    <td>{{ Str::limit(implode(', ', [$item->alamat, $item->provinsi, $item->kab_kota, $item->kecamatan, $item->kelurahan]), 15, '...') }}
+                                    </td>
                                     <td>
-                                        <form action="{{ route('admin.kategoriPengaduan.destroy', $item->id) }}"
-                                            method="POST">
+                                        <form action="{{ route('admin.petugas.destroy', $item->id) }}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <div class="d-flex justify-content-start gap-2">
-                                                <a href="{{ route('admin.kategoriPengaduan.edit', $item->slug) }}"
+                                                <a href="{{ route('admin.petugas.edit', $item->id) }}"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"
                                                     class="btn icon btn-sm btn-outline-primary rounded-pill">
                                                     <i data-feather="edit"></i>
@@ -65,10 +73,10 @@
                                                 </button>
                                             </div>
                                         </form>
-                                        {{-- <span class="badge bg-success">Active</span> --}}
                                     </td>
                                 </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>

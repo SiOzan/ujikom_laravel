@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriPengaduan;
+use App\Models\Pengaduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $masyarakat        = User::where('role', 'masyarakat')->latest()->get();
+        $kategoriPengaduan = KategoriPengaduan::latest()->get();
+        return view('home', compact('masyarakat', 'kategoriPengaduan'));
     }
 }

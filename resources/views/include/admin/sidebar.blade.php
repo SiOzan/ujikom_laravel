@@ -79,8 +79,8 @@
                             <a href="{{ route('admin.kategoriPengaduan.index') }}" class="submenu-link">Kategori
                                 Pengaduan</a>
                         </li>
-                        <li class="submenu-item  ">
-                            <a href="component-alert.html" class="submenu-link">Pengaduan Masyarakat</a>
+                        <li class="submenu-item {{ request()->routeIs('admin.pengaduan.*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.pengaduan.index') }}" class="submenu-link">Pengaduan Masyarakat</a>
                         </li>
                     </ul>
                 </li>

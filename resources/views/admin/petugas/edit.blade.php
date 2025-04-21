@@ -14,9 +14,10 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" action="{{ route('admin.petugas.store') }}" method="POST"
+                            <form class="form" action="{{ route('admin.petugas.update', $petugas->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
@@ -61,7 +62,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label>Foto Petugas <span class="text-danger">*</span></label>
                                             <input class="form-control @error('foto') is-invalid @enderror" type="file"
@@ -72,6 +73,9 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-md-2 col-12">
+                                        <img src="{{ Storage::url($petugas->foto) }}" style="width: 4rem;">
                                     </div>
 
                                     <hr class="mt-3">

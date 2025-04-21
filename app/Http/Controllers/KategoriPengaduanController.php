@@ -24,11 +24,10 @@ class KategoriPengaduanController extends Controller
     {
         $validated = $request->validate([
             'nama_kategori' => 'required|unique:kategori_pengaduans',
-            'deskripsi'     => 'required',
+            'deskripsi'     => 'nullable',
         ], [
             'nama_kategori.required' => 'Nama Kategori harus diisi',
             'nama_kategori.unique'   => 'Nama Kategori sudah ada',
-            'deskripsi.required'     => 'Deskripsi harus diisi',
         ]);
 
         $kategoriPengaduan                = new KategoriPengaduan();

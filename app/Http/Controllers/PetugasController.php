@@ -75,15 +75,54 @@ class PetugasController extends Controller
 
     public function edit($id)
     {
-        $petugas = Petugas::findOrFail($id);
+        $petugas     = Petugas::findOrFail($id);
         $akunPetugas = User::where('role', 'Petugas')->latest()->get();
 
         return view('admin.petugas.edit', compact('petugas', 'akunPetugas'));
     }
 
-    public function update(Request $request, Petugas $petugas)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'foto'      => 'image|mimes:png,jpg,jpeg|max:2048',
+            'telepon'   => 'required',
+            'provinsi'  => 'required',
+            'kab_kota'  => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'alamat'    => 'required',
+            'user_id'   => 'required',
+        ], [
+            'foto.image'         => 'File harus berupa gambar',
+            'foto.mimes'         => 'Format gambar harus PNG atau JPG',
+            'foto.max'           => 'Ukuran gambar tidak boleh lebih dari 2MB',
+            'telepon.required'   => 'Nomor telepon harus diisi',
+            'provinsi.required'  => 'Provinsi harus diisi',
+            'kab_kota.required'  => 'Kab/Kota harus diisi',
+            'kecamatan.required' => 'Kecamatan harus diisi',
+            'kelurahan.required' => 'Kelurahan harus diisi',
+            'alamat.required'    => 'Alamat lengkap harus diisi',
+            'user_id.required'   => 'Akun Petugas harus diisi',
+        ]);
+
+        $petugas = Petugas::findOrFail($id);
+        if ($request->hasFile('foto')) {
+            if ($petugas->foto && Storage::disk('public')->exists($petugas->foto)) {
+                Storage::disk('public')->delete($petugas->foto);
+            }
+            $path          = $request->file('foto')->store('petugas', 'public');
+            $petugas->foto = $path;
+        }
+        $petugas->telepon   = $request->telepon;
+        $petugas->provinsi  = $request->provinsi;
+        $petugas->kab_kota  = $request->kab_kota;
+        $petugas->kecamatan = $request->kecamatan;
+        $petugas->kelurahan = $request->kelurahan;
+        $petugas->alamat    = $request->alamat;
+        $petugas->user_id   = $request->user_id;
+        $petugas->save();
+
+        return redirect()->route('admin.petugas.index')->with('success', 'Data Berhasil Diubah!');
     }
 
     public function destroy($id)

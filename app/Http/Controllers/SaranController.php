@@ -43,6 +43,30 @@ class SaranController extends Controller
         return redirect()->route('admin.saran.index')->with('success', 'Data Berhasil Dibuat!');
     }
 
+    public function storeUser(Request $request)
+    {
+        $validated = $request->validate([
+            'nama'      => 'required',
+            'email'     => 'required',
+            'judul'     => 'required',
+            'deskripsi' => 'required',
+        ], [
+            'nama.required'      => 'Nama harus diisi',
+            'email.required'     => 'Email harus diisi',
+            'judul.required'     => 'Judul laporan harus diisi',
+            'deskripsi.required' => 'Deskripsi laporan harus diisi',
+        ]);
+
+        $saran            = new Saran();
+        $saran->nama      = $request->nama;
+        $saran->email     = $request->email;
+        $saran->judul     = $request->judul;
+        $saran->deskripsi = $request->deskripsi;
+        $saran->save();
+
+        return redirect('/')->with('success', 'Data Berhasil Dibuat!');
+    }
+
     public function show(Saran $saran)
     {
         //

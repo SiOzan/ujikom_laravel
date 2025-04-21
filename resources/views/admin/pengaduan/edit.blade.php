@@ -101,9 +101,9 @@
                                             <div class="input-group mb-3">
                                                 <select class="form-select @error('prioritas') is-invalid @enderror"
                                                     name="prioritas" id="inputGroupSelect01">
-                                                    <option value="Rendah" selected>Rendah</option>
-                                                    <option value="Sedang">Sedang</option>
-                                                    <option value="Tinggi">Tinggi</option>
+                                                    <option value="Rendah" {{$pengaduan->prioritas == 'Rendah' ? 'selected' : ''}}>Rendah</option>
+                                                    <option value="Sedang" {{$pengaduan->prioritas == 'Sedang' ? 'selected' : ''}}>Sedang</option>
+                                                    <option value="Tinggi" {{$pengaduan->prioritas == 'Tinggi' ? 'selected' : ''}}>Tinggi</option>
                                                 </select>
                                                 <label class="input-group-text" for="inputGroupSelect01">Pilih</label>
                                                 @error('prioritas')

@@ -45,7 +45,7 @@
                             @foreach ($pengaduan as $item)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->nama }}</td>
                                     <td>{{ Str::limit($item->judul, 15, '...') }}</td>
                                     <td>{{ Str::limit($item->deskripsi, 30, '...') }}</td>
                                     <td>{{ $item->prioritas }}</td>

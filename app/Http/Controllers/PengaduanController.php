@@ -11,7 +11,7 @@ class PengaduanController extends Controller
 {
     public function index()
     {
-        $pengaduan = Pengaduan::latest()->get();
+        $pengaduan = Pengaduan::where('status', 'Baru')->latest()->get();
 
         return view('admin.pengaduan.index', compact('pengaduan'));
     }
@@ -126,7 +126,7 @@ class PengaduanController extends Controller
         $pengaduan->status        = "Baru";
         $pengaduan->save();
 
-        return redirect()->route('admin.pengaduan.index')->with('success', 'Data Pengaduan Berhasil Dibuat!');
+        return redirect()->route('home')->with('success', 'Data Pengaduan Berhasil Dibuat!');
     }
 
     public function show(Pengaduan $pengaduan)
@@ -142,9 +142,6 @@ class PengaduanController extends Controller
         return view('admin.pengaduan.edit', compact('pengaduan', 'masyarakat', 'kategoriPengaduan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -201,9 +198,6 @@ class PengaduanController extends Controller
         return redirect()->route('admin.pengaduan.index')->with('success', 'Data Pengaduan Berhasil Diubah!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Pengaduan $pengaduan)
     {
         //

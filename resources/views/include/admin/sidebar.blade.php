@@ -80,12 +80,20 @@
                                 Pengaduan</a>
                         </li>
                         <li class="submenu-item {{ request()->routeIs('admin.pengaduan.*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.pengaduan.index') }}" class="submenu-link">Pengaduan Masyarakat</a>
+                            <a href="{{ route('admin.pengaduan.index') }}" class="submenu-link">Pengaduan
+                                Masyarakat</a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="sidebar-item {{ request()->routeIs('admin.saran.index') ? 'active' : '' }}">
+                <li class="sidebar-item {{ request()->routeIs('admin.laporan.*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.laporan.index') }}" class='sidebar-link'>
+                        <i class="bi bi-journal-text"></i>
+                            <span>Data Laporan</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{ request()->routeIs('admin.saran.*') ? 'active' : '' }}">
                     <a href="{{ route('admin.saran.index') }}" class='sidebar-link'>
                         <i class="bi bi-envelope-fill"></i>
                         <span>Kontak Saran</span>

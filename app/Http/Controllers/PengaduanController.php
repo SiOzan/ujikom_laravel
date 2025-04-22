@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\KategoriPengaduan;
 use App\Models\Pengaduan;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PengaduanController extends Controller
 {
@@ -129,11 +129,6 @@ class PengaduanController extends Controller
         return redirect()->route('home')->with('success', 'Data Pengaduan Berhasil Dibuat!');
     }
 
-    public function show(Pengaduan $pengaduan)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $pengaduan         = Pengaduan::findOrFail($id);
@@ -198,8 +193,15 @@ class PengaduanController extends Controller
         return redirect()->route('admin.pengaduan.index')->with('success', 'Data Pengaduan Berhasil Diubah!');
     }
 
-    public function destroy(Pengaduan $pengaduan)
+    public function destroy($id)
     {
-        //
+        $pengaduan = Pengaduan::findOrFail($id);
+
+        if ($pengaduan->foto && Storage::disk('public')->exists($pengaduan->foto)) {
+            Storage::disk('public')->delete($pengaduan->foto);
+        }
+        $pengaduan->delete();
+
+        return redirect()->route('admin.pengaduan.index')->with('success', 'Data pengaduan berhasil dihapus!');
     }
 }

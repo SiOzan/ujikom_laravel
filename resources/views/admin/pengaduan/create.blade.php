@@ -142,7 +142,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
-                                            Keterangan Terkait Laporan Masalah <span class="text-danger">*</span>
+                                            Keterangan Lengkap Terkait Laporan Masalah <span class="text-danger">*</span>
                                         </div>
                                         <div class="col-md-8 form-group">
                                             <div class="form-group mb-3">

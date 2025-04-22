@@ -43,6 +43,28 @@ class SaranController extends Controller
         return redirect()->route('admin.saran.index')->with('success', 'Data Berhasil Dibuat!');
     }
 
+    public function show(Saran $saran)
+    {
+        //
+    }
+
+    public function edit(Saran $saran)
+    {
+        //
+    }
+
+    public function update(Request $request, Saran $saran)
+    {
+        //
+    }
+
+    public function destroy($id)
+    {
+        $saran = Saran::findOrFail($id);
+        $saran->delete();
+        return redirect()->route('admin.saran.index')->with('success', 'Data berhasil dihapus!');
+    }
+    
     public function storeUser(Request $request)
     {
         $validated = $request->validate([
@@ -65,28 +87,6 @@ class SaranController extends Controller
         $saran->save();
 
         return redirect('/')->with('success', 'Data Berhasil Dibuat!');
-    }
-
-    public function show(Saran $saran)
-    {
-        //
-    }
-
-    public function edit(Saran $saran)
-    {
-        //
-    }
-
-    public function update(Request $request, Saran $saran)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        $saran = Saran::findOrFail($id);
-        $saran->delete();
-        return redirect()->route('admin.saran.index')->with('success', 'Data berhasil dihapus!');
     }
 
     public function indexFlutter()

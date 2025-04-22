@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>LaporIn</title>
+    <link rel="shortcut icon" href="{{ asset('admin/assets/compiled/svg/favicon.svg') }}" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">

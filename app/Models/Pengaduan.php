@@ -18,4 +18,8 @@ class Pengaduan extends Model
     public function kategoriPengaduan(){
         return $this->belongsTo(KategoriPengaduan::class, 'kategori_id');
     }
+
+    public function laporan(){
+        return $this->hasMany(Laporan::class, 'pengaduan_id');
+    }
 }

@@ -68,16 +68,6 @@ class PetugasController extends Controller
         return redirect()->route('admin.petugas.index')->with('success', 'Data Berhasil Dibuat!');
     }
 
-    public function show($id)
-    {
-        $petugas = Petugas::findOrFail($id);
-        if (! $petugas->user) {
-            dd('User tidak ditemukan untuk petugas ini', $petugas);
-        }
-        $akunPetugas = User::all();
-        return view('admin.petugas.show', compact('petugas', 'akunPetugas'));
-    }
-
     public function edit($id)
     {
         $petugas     = Petugas::findOrFail($id);

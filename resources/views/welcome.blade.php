@@ -10,7 +10,7 @@
     <meta name="keywords" content="Laporan, Pengaduan, Masyarakat, Pemerintah, Layanan Publik">
 
     <!-- Favicons -->
-    <link href="{{ asset('user/assets/img/favicon.png') }}" rel="icon">
+    <link rel="shortcut icon" href="{{ asset('user/assets/img/logo-bg.png') }}" type="image/x-icon">
     <link href="{{ asset('user/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Fonts -->
@@ -37,8 +37,8 @@
         <div class="container-fluid container-xl position-relative d-flex align-items-center">
             <a href="index.html" class="logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1 class="sitename">LaporIn</h1>
+                <img src="{{ asset('user/assets/img/logo-nbg.png') }}" alt="">
+                {{-- <h1 class="sitename">LaporIn</h1> --}}
             </a>
             <nav id="navmenu" class="navmenu">
                 <ul>
@@ -64,7 +64,7 @@
                         <p>Sampaikan laporan Anda langsung ke instansi pemerintah yang berwenang dengan mudah dan cepat.
                         </p>
                         <div class="d-flex">
-                            <a href="{{ route('home') }}" class="btn-get-started">LaporIn!</a>
+                            <a href="{{ route('home') }}" class="btn-get-started">Lapor!</a>
                         </div>
                     </div>
                     <div class="col-lg-6 order-1 order-lg-2 hero-img">
@@ -83,7 +83,8 @@
                 <div class="row gy-4">
 
                     <div class="col-xl-2 col-md-3 col-6 client-logo">
-                        <img src="{{ asset('user/assets/img/clients/client-1.png') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('user/assets/img/clients/client-1.png') }}" class="img-fluid"
+                            alt="">
                     </div><!-- End Client Item -->
 
                     <div class="col-xl-2 col-md-3 col-6 client-logo">
@@ -321,7 +322,8 @@
                     </div>
 
                     <div class="col-lg-7">
-                        <form action="{{ route('saran.store') }}" method="POST" data-aos="fade-up" data-aos-delay="500">
+                        <form action="{{ route('saran.store') }}" method="POST" data-aos="fade-up"
+                            data-aos-delay="500">
                             @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -336,7 +338,8 @@
                                 </div>
                                 <div class="col-md-6 ">
                                     <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" placeholder="Masukan alamat email anda">
+                                        name="email" value="{{ old('email') }}"
+                                        placeholder="Masukan alamat email anda">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -362,7 +365,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 text-center" style="margin-top: 20px;">
-                                    <button type="submit" class="btn" style="background-color: #3498db; color: white; padding: 12px 30px; font-size: 16px; border: none; border-radius: 8px; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); transition: all 0.3s ease;">
+                                    <button type="submit" class="btn"
+                                        style="background-color: #3498db; color: white; padding: 12px 30px; font-size: 16px; border: none; border-radius: 8px; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); transition: all 0.3s ease;">
                                         Kirim Pesan
                                     </button>
                                 </div>

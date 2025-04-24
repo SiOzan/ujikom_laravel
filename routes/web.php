@@ -22,7 +22,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('all route', [AdminController::class, 'allIndex']);
 
     Route::get('manage-user', [UserController::class, 'index'])->name('admin.user.index');
     Route::get('manage-user/create', [UserController::class, 'create'])->name('admin.user.create');
@@ -64,4 +63,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('laporan/edit/{id}', [LaporanController::class, 'edit'])->name('admin.laporan.edit');
     Route::put('laporan/{id}', [LaporanController::class, 'update'])->name('admin.laporan.update');
     Route::delete('laporan/{id}', [LaporanController::class, 'destroy'])->name('admin.laporan.destroy');
+});
+
+Route::group(['prefix' => 'petugas', 'middleware' => 'auth'], function () {
+    Route::get('dashboard', [PetugasController::class, 'dashboard'])->name('petugas.index');
+    Route::put('dashboard/{id}', [PetugasController::class, 'kerjakan'])->name('petugas.kerjakan');
+    // Route::put('dashboard/{id}', [PetugasController::class, 'selesai'])->name('petugas.selesai');
 });

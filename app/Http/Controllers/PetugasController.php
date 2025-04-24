@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Laporan;
+use App\Models\Pengaduan;
 use App\Models\Petugas;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -129,5 +131,32 @@ class PetugasController extends Controller
         $petugas->delete();
 
         return redirect()->route('admin.petugas.index')->with('success', 'data berhasil dihapus!');
+    }
+
+    public function dashboard()
+    {
+        $tugas        = Laporan::latest()->get();
+        $tugasBaru    = Pengaduan::where('status', 'Baru')->count();
+        $tugasProses  = Pengaduan::where('status', 'Proses')->count();
+        $tugasSelesai = Pengaduan::where('status', 'Selesai')->count();
+
+        return view('petugas.dashboard', compact('tugas', 'tugasBaru', 'tugasProses', 'tugasSelesai'));
+    }
+
+    public function kerjakan(Request $request, $id)
+    {
+        $kerjaan         = Pengaduan::findOrFail($id);
+        $kerjaan->status = "Proses";
+        $kerjaan->save();
+
+        return redirect()->route('petugas.index')->with('success', 'Tugas dalam proses pengerjaan!');
+    }
+    public function selesai(Request $request, $id)
+    {
+        $kerjaan         = Pengaduan::findOrFail($id);
+        $kerjaan->status = "Selesai";
+        $kerjaan->save();
+
+        return redirect()->route('petugas.index')->with('success', 'Tugas selesai dikerjakan!');
     }
 }

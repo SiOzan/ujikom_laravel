@@ -43,7 +43,7 @@
                             @foreach ($laporan as $item)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->petugas->user->name }}</td>
                                     <td>{{ Str::limit($item->pengaduan->judul, 25, '...') }}</td>
                                     <td>{{ $item->pengaduan->status }}</td>
                                     <td>

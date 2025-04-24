@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Laporan;
 use App\Models\Pengaduan;
-use App\Models\User;
+use App\Models\Petugas;
 use Illuminate\Http\Request;
 
 class LaporanController extends Controller

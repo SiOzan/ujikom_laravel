@@ -9,14 +9,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Membuat Saran Masukan</h3>
+                    <h3>Membuatkan laporan tugas</h3>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Saran
+                                Laporan
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Create</li>
                         </ol>
@@ -67,7 +67,7 @@
                                                         class="choices form-select @error('petugas_id') is-invalid @enderror"
                                                         name="petugas_id">
                                                         @foreach ($petugas as $data)
-                                                            <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                            <option value="{{ $data->id }}">{{ $data->user->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -77,7 +77,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-md-4">
+                                            {{-- <div class="col-md-4">
                                                 Keterangan Laporan <span class="text-danger">*</span>
                                             </div>
                                             <div class="col-md-8 form-group">
@@ -103,7 +103,7 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Kirim</button>
                                                 <button class="btn btn-light-secondary me-1 mb-1"><a

@@ -15,7 +15,7 @@
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Petugas</li>
                         </ol>
                     </nav>
@@ -61,7 +61,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <div class="d-flex justify-content-start gap-2">
-                                                <button type="button"
+                                                {{-- <button type="button"
                                                     class="btn icon btn-sm btn-outline-warning rounded-pill"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat"
                                                     data-bs-toggle="modal"
@@ -116,7 +116,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <a href="{{ route('admin.petugas.edit', $item->id) }}"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"
                                                     class="btn icon btn-sm btn-outline-primary rounded-pill">

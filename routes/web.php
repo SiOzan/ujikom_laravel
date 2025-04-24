@@ -22,6 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('all route', [AdminController::class, 'allIndex']);
 
     Route::get('manage-user', [UserController::class, 'index'])->name('admin.user.index');
     Route::get('manage-user/create', [UserController::class, 'create'])->name('admin.user.create');
